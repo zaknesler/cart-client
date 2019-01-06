@@ -12,11 +12,5 @@
     components: {
       Navigation,
     },
-
-    head: () => ({
-      htmlAttrs: {
-        class: 'font-sans font-normal leading-normal tracking-normal roman text-base bg-grey-lighter text-grey-darker antialiased',
-      },
-    }),
   }
 </script>

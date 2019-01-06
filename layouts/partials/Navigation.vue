@@ -1,30 +1,63 @@
 <template>
-  <div class="bg-white border-b">
-    <div class="p-6 max-w-2xl mx-auto flex items-baseline justify-between">
-      <!-- Left Navigation -->
-      <nav>
-        <nuxt-link
-          :to="{ name: 'index' }"
-          class="font-semibold text-blue-dark no-underline hover:underline"
-        >
+  <nav class="navbar is-white">
+    <div class="container">
+      <div class="navbar-brand">
+        <nuxt-link :to="{ name: 'index' }" class="navbar-item">
           Cart
         </nuxt-link>
 
-      </nav>
+        <div class="navbar-burger burger" data-target="nav">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
 
-      {{ categories }}
+      <div class="navbar-menu">
+        <template v-for="category in categories">
+          <template v-if="category.children.length">
+            <div :key="category.slug" class="navbar-item is-hoverable has-dropdown">
+              <nuxt-link
+                :to="{ name: 'categories-slug', params: { slug: category.slug } }"
+                class="navbar-link"
+              >
+                {{ category.name }}
+              </nuxt-link>
 
-      <!-- Right Navigation -->
-      <nav>
-        <nuxt-link
-          :to="{ name: 'index' }"
-          class="text-grey-darkest no-underline hover:underline"
-        >
-          Sign in
-        </nuxt-link>
-      </nav>
+              <div class="navbar-dropdown">
+                <nuxt-link
+                  v-for="child in category.children"
+                  :key="child.slug"
+                  :to="{ name: 'categories-slug', params: { slug: child.slug } }"
+                  class="navbar-item"
+                >
+                  {{ child.name }}
+                </nuxt-link>
+              </div>
+            </div>
+          </template>
+
+          <template v-else>
+            <nuxt-link
+              :key="category.slug"
+              :to="{ name: 'categories-slug', params: { slug: category.slug } }"
+              class="navbar-item"
+            >
+              {{ category.name }}
+            </nuxt-link>
+          </template>
+        </template>
+      </div>
+
+      <div id="nav" class="navbar-menu">
+        <div class="navbar-end">
+          <a href="#" class="navbar-item">
+            Sign in
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>

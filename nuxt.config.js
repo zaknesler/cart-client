@@ -29,7 +29,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/less/app.less',
+    '~/assets/sass/app.scss',
   ],
 
   /*
@@ -44,7 +44,6 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
-    'nuxt-purgecss',
     'nuxt-spa-store-init'
   ],
   /*
