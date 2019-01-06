@@ -17,7 +17,7 @@ module.exports = {
 
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ],
+    ]
   },
 
   /*
@@ -29,7 +29,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/sass/app.scss',
+    '~/assets/sass/app.scss'
   ],
 
   /*
@@ -45,14 +45,14 @@ module.exports = {
   modules: [
     'nuxt-spa-store-init',
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
+    '@nuxtjs/auth'
   ],
 
   /*
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://cart-api.test/api',
+    baseURL: 'http://cart-api.test/api'
   },
 
   auth: {
@@ -61,7 +61,7 @@ module.exports = {
         endpoints: {
           login: { url: '/auth/login', method: 'post', propertyName: 'meta.token' },
           user: { url: '/auth/me', method: 'get', propertyName: 'data' },
-          logout: false,
+          logout: false
         },
       },
     },
@@ -75,8 +75,8 @@ module.exports = {
 
     postcss: {
       plugins: {
-        'postcss-custom-properties': false,
-      },
+        'postcss-custom-properties': false
+      }
     },
 
     /*
@@ -92,6 +92,6 @@ module.exports = {
           exclude: /(node_modules)/,
         })
       }
-    },
-  },
+    }
+  }
 }

@@ -67,7 +67,7 @@
 
   export default {
     components: {
-      ProductVariation,
+      ProductVariation
     },
 
     data: () => ({
@@ -75,7 +75,7 @@
 
       form: {
         variation: '',
-        quantity: 1,
+        quantity: 1
       }
     }),
 

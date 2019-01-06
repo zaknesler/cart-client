@@ -35,18 +35,18 @@
     props: {
       type: {
         required: true,
-        type: String,
+        type: String
       },
 
       variations: {
         required: true,
-        type: Array,
+        type: Array
       },
 
       value: {
         required: false,
         type: String,
-        default: '',
+        default: ''
       }
     },
 
@@ -73,7 +73,7 @@
         }
 
         return variation
-      },
-    },
+      }
+    }
   }
 </script>

@@ -48,13 +48,13 @@
     methods: {
       async login () {
         await this.$auth.loginWith('local', {
-          data: this.form,
+          data: this.form
         })
 
         this.$router.replace({
-          name: 'index',
+          name: 'index'
         })
-      },
+      }
     }
   }
 </script>
