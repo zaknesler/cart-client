@@ -6,7 +6,7 @@
 
     <td>
       <div>{{ product.product.name }}</div>
-      <div class="has-text-grey">{{ product.name }}</div>
+      <div class="has-text-grey">{{ product.type }} / {{ product.name }}</div>
     </td>
 
     <td width="160">

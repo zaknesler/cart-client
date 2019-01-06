@@ -7,6 +7,36 @@
         :product="product"
       />
     </tbody>
+
+    <tr>
+      <td />
+      <td />
+
+      <td>
+        <p class="has-text-weight-bold">Subtotal</p>
+      </td>
+
+      <td>
+        <p>{{ subtotal }}</p>
+      </td>
+
+      <td />
+    </tr>
+
+    <tr>
+      <td />
+      <td />
+
+      <td>
+        <p class="has-text-weight-bold">Total</p>
+      </td>
+
+      <td>
+        <p>{{ total }}</p>
+      </td>
+
+      <td />
+    </tr>
   </table>
 </template>
 
@@ -22,7 +52,9 @@
 
     computed: {
       ...mapGetters({
-        products: 'cart/products'
+        products: 'cart/products',
+        subtotal: 'cart/subtotal',
+        total: 'cart/total'
       })
     }
   }
