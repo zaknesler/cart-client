@@ -43,9 +43,11 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-spa-store-init',
     '@nuxtjs/axios',
-    'nuxt-spa-store-init'
+    '@nuxtjs/auth',
   ],
+
   /*
   ** Axios module configuration
   */
@@ -53,11 +55,29 @@ module.exports = {
     baseURL: 'http://cart-api.test/api',
   },
 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'meta.token' },
+          user: { url: '/auth/me', method: 'get', propertyName: 'data' },
+          logout: false,
+        },
+      },
+    },
+  },
+
   /*
   ** Build configuration
   */
   build: {
     extractCSS: true,
+
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': false,
+      },
+    },
 
     /*
     ** You can extend webpack config here
