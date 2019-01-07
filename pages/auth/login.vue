@@ -10,7 +10,13 @@
               <label class="label">Email</label>
 
               <div class="control">
-                <input v-model="form.email" class="input" type="email" placeholder="e.g. alex@codecourse.com">
+                <input
+                  v-model="form.email"
+                  class="input"
+                  type="email"
+                  placeholder="you@example.com"
+                  autofocus
+                >
               </div>
             </div>
 

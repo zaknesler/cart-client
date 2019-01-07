@@ -69,6 +69,8 @@
             <nuxt-link :to="{ name: 'cart'}" class="navbar-item">
               Cart ({{ cartCount }})
             </nuxt-link>
+
+            <LogoutComponent class="navbar-item" />
           </template>
         </div>
       </div>
@@ -79,7 +81,13 @@
 <script>
   import { mapGetters } from 'vuex'
 
+  import LogoutComponent from '~/components/globals/LogoutComponent'
+
   export default {
+    components: {
+      LogoutComponent
+    },
+
     computed: {
       ...mapGetters({
         categories: 'categories',
