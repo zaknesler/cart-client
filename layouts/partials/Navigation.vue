@@ -58,19 +58,18 @@
           </template>
 
           <template v-else>
-            <a href="#" class="navbar-item">
-              {{ $auth.user.name }}
-            </a>
-
-            <nuxt-link :to="{ name: 'orders'}" class="navbar-item">
-              Orders
-            </nuxt-link>
-
             <nuxt-link :to="{ name: 'cart'}" class="navbar-item">
               Cart ({{ cartCount }})
             </nuxt-link>
 
-            <LogoutComponent class="navbar-item" />
+            <div class="navbar-item is-hoverable has-dropdown">
+              <div class="navbar-link">{{ $auth.user.name }}</div>
+
+              <div class="navbar-dropdown">
+                <nuxt-link :to="{ name: 'orders'}" class="navbar-item">Orders</nuxt-link>
+                <LogoutComponent class="navbar-item" />
+              </div>
+            </div>
           </template>
         </div>
       </div>
