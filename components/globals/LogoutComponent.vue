@@ -1,5 +1,5 @@
 <template>
-  <a @click.prevent="logout">Logout</a>
+  <a @click.prevent="logout">Sign out</a>
 </template>
 
 <script>
