@@ -23,20 +23,7 @@
       <td />
     </tr>
 
-    <tr>
-      <td />
-      <td />
-
-      <td>
-        <p class="has-text-weight-bold">Total</p>
-      </td>
-
-      <td>
-        <p>{{ total }}</p>
-      </td>
-
-      <td />
-    </tr>
+    <slot name="rows" />
   </table>
 </template>
 

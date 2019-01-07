@@ -19,12 +19,12 @@
             </article>
 
             <div class="has-text-right">
-              <a
-                href="#"
+              <nuxt-link
+                :to="{ name: 'checkout' }"
                 class="button is-info is-medium"
               >
                 Checkout
-              </a>
+              </nuxt-link>
             </div>
           </template>
 
