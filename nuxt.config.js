@@ -15,6 +15,10 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description },
     ],
 
+    script: [
+      { src: 'https://js.stripe.com/v3/' },
+    ],
+
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ]
@@ -45,7 +49,8 @@ module.exports = {
   modules: [
     'nuxt-spa-store-init',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/dotenv'
   ],
 
   /*
@@ -62,9 +67,9 @@ module.exports = {
           login: { url: '/auth/login', method: 'post', propertyName: 'meta.token' },
           user: { url: '/auth/me', method: 'get', propertyName: 'data' },
           logout: false
-        },
-      },
-    },
+        }
+      }
+    }
   },
 
   /*

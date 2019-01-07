@@ -5,14 +5,6 @@
         <div class="column is-three-quarters">
           <h1 class="title is-4">Your cart</h1>
 
-          <template v-if="changed">
-            <article class="message is-info">
-              <div class="message-body">
-                Some items in your cart have changed. Please review these changes before placing your order.
-              </div>
-            </article>
-          </template>
-
           <template v-if="products.length">
             <article class="message">
               <CartOverview />
@@ -29,7 +21,7 @@
           </template>
 
           <template v-else>
-            <article class="message is-info">
+            <article class="message">
               <div class="message-body">
                 Your cart is empty.
               </div>
@@ -50,6 +42,10 @@
     components: {
       CartOverview
     },
+
+    middleware: [
+      'redirectIfGuest'
+    ],
 
     computed: {
       ...mapGetters({

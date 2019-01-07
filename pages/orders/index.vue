@@ -39,6 +39,10 @@
       Order
     },
 
+    middleware: [
+      'redirectIfGuest'
+    ],
+
     data: () => ({
       orders: []
     }),

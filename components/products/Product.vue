@@ -19,6 +19,7 @@
         <p v-if="product.description">{{ product.description }}</p>
 
         <span class="tag is-rounded is-medium">{{ product.price }}</span>
+        <span v-if="!product.in_stock" class="tag is-rounded is-medium is-dark">Out of Stock</span>
       </div>
     </div>
   </div>

@@ -1,42 +1,48 @@
 <template>
   <tr>
-    <td>
-      #{{ order.id }}
-    </td>
+    <td>#{{ order.id }}</td>
 
-    <td>
-      {{ order.created_at }}
-    </td>
+    <td>{{ order.created_at }}</td>
 
     <td>
       <div v-for="variation in products" :key="variation.id">
         <nuxt-link
-          :to="{ name: 'products-slug', params: { slug: variation.product.slug } }"
+          :to="{
+            name: 'products-slug',
+            params: {
+              slug: variation.product.slug
+            }
+          }"
         >
-          {{ variation.product.name }} ({{ variation.name }}) - {{ variation.type }}
+          {{ variation.quantity }} x {{ variation.product.name }} ({{ variation.name }}) - {{ variation.type }}
         </nuxt-link>
       </div>
 
-      <template v-if="moreProducts > 0">
-        and {{ moreProducts }} more
-      </template>
+      <template v-if="moreProducts > 0">and {{ moreProducts }} more</template>
     </td>
 
     <td>{{ order.total }}</td>
 
     <td>
-      <span
-        :class="statusClasses"
-        class="tag is-medium"
-      >
-        {{ order.status }}
-      </span>
+      <component :is="order.status" />
     </td>
   </tr>
 </template>
 
 <script>
+  import OrderStatusPending from './statuses/OrderStatusPending'
+  import OrderStatusCompleted from './statuses/OrderStatusCompleted'
+  import OrderStatusProcessing from './statuses/OrderStatusProcessing'
+  import OrderStatusPaymentFailed from './statuses/OrderStatusPaymentFailed'
+
   export default {
+    components: {
+      'pending': OrderStatusPending,
+      'completed': OrderStatusCompleted,
+      'processing': OrderStatusProcessing,
+      'payment_failed': OrderStatusPaymentFailed
+    },
+
     props: {
       order: {
         required: true,

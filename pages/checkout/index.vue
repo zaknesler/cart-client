@@ -3,7 +3,10 @@
     <div class="container is-fluid">
       <div class="columns">
         <div class="column is-three-quarters">
-          <ShippingAddress :addresses="addresses" v-model="form.address_id" />
+          <ShippingAddress
+            :addresses="addresses"
+            v-model="form.address_id"
+          />
 
           <article v-if="shippingMethodId" class="message">
             <div class="message-body">
@@ -25,11 +28,10 @@
             </div>
           </article>
 
-          <article class="message">
-            <div class="message-body">
-              <h1 class="title is-5">Payment</h1>
-            </div>
-          </article>
+          <PaymentMethod
+            :payment-methods="paymentMethods"
+            v-model="form.payment_method_id"
+          />
 
           <article v-if="products.length" class="message">
             <div class="message-body">
@@ -76,7 +78,7 @@
           <article class="message">
             <div class="message-body">
               <button
-                :disabled="empty || submitting"
+                :disabled="!canPlaceOrder"
                 class="button is-info is-fullwidth is-medium"
                 @click.prevent="placeOrder"
               >
@@ -90,7 +92,7 @@
           <article class="message">
             <div class="message-body">
               <button
-                :disabled="empty || submitting"
+                :disabled="!canPlaceOrder"
                 class="button is-info is-fullwidth is-medium"
                 @click.prevent="placeOrder"
               >
@@ -109,21 +111,29 @@
 
   import CartOverview from '~/components/cart/CartOverview'
   import ShippingAddress from '~/components/checkout/addresses/ShippingAddress'
+  import PaymentMethod from '~/components/checkout/paymentMethods/PaymentMethod'
 
   export default {
     components: {
       CartOverview,
-      ShippingAddress
+      ShippingAddress,
+      PaymentMethod
     },
+
+    middleware: [
+      'redirectIfGuest'
+    ],
 
     data: () => ({
       submitting: false,
 
       addresses: [],
       shippingMethods: [],
+      paymentMethods: [],
 
       form: {
-        address_id: null
+        address_id: null,
+        payment_method_id: null
       }
     }),
 
@@ -145,6 +155,15 @@
             this.shippingMethods.find(s => s.id === shippingMethodId)
           )
         }
+      },
+
+      canPlaceOrder () {
+        return !(this.empty
+          || this.submitting
+          || !this.form.address_id
+          || !this.form.payment_method_id
+          || !this.shippingMethodId
+        )
       }
     },
 
@@ -181,7 +200,6 @@
         try {
           await this.$axios.$post('/orders', {
             shipping_method_id: this.shippingMethodId,
-            payment_method_id: 1,
             ...this.form
           })
 
@@ -199,10 +217,12 @@
     },
 
     async asyncData ({ app }) {
-      let { data } = await app.$axios.$get('/addresses')
+      let addresses = await app.$axios.$get('/addresses')
+      let paymentMethods = await app.$axios.$get('/payment-methods')
 
       return {
-        addresses: data
+        addresses: addresses.data,
+        paymentMethods: paymentMethods.data
       }
     }
   }

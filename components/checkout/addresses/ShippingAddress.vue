@@ -33,12 +33,17 @@
         </template>
 
         <div class="field is-grouped">
-          <p class="control">
-            <a class="button" @click.prevent="selecting = true">Change shipping address</a>
+          <p v-if="addresses.length > 1" class="control">
+            <button
+              class="button"
+              @click.prevent="selecting = true"
+            >
+              Change shipping address
+            </button>
           </p>
 
           <p class="control">
-            <a class="button" @click.prevent="creating = true">Add an address</a>
+            <button class="button" @click.prevent="creating = true">Add an address</button>
           </p>
         </div>
       </template>
