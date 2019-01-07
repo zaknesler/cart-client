@@ -43,6 +43,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   export default {
     data: () => ({
       form: {
@@ -56,19 +58,26 @@
     ],
 
     methods: {
+      ...mapActions({
+        flash: 'alert/flash'
+      }),
+
       async login () {
         await this.$auth.loginWith('local', {
           data: this.form
+        }).then(({ data }) => {
+          if (this.$route.query.redirect) {
+            this.$router.replace(this.$route.query.redirect)
+
+            return
+          }
+
+          this.$router.replace({
+            name: 'index'
+          })
         })
-
-        if (this.$route.query.redirect) {
-          this.$router.replace(this.$route.query.redirect)
-
-          return
-        }
-
-        this.$router.replace({
-          name: 'index'
+        .catch(({ response }) => {
+          this.flash('We could not sign you in with those credentials.')
         })
       }
     }
