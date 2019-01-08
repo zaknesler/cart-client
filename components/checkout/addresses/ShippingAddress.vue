@@ -22,12 +22,12 @@
         <template v-if="selectedAddress">
           <p>{{ selectedAddress.name }}</p>
           <p>{{ selectedAddress.address_1 }}</p>
-          <p>{{ selectedAddress.city }}</p>
-          <p>{{ selectedAddress.postal_code }}</p>
+          <p>{{ selectedAddress.address_2 }}</p>
+          <p>{{ selectedAddress.city }} {{ selectedAddress.postal_code }}</p>
           <p v-if="selectedAddress.country_division">
-            {{ selectedAddress.country_division.name }}
+            {{ selectedAddress.country_division.name }}, {{ selectedAddress.country.name }}
           </p>
-          <p>{{ selectedAddress.country.name }}</p>
+          <p v-else>{{ selectedAddress.country.name }}</p>
 
           <br>
         </template>

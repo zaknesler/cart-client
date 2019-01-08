@@ -5,12 +5,12 @@
         <td :class="{ 'has-text-weight-bold': address.id === selectedAddress.id }">
           <p>{{ address.name }}</p>
           <p>{{ address.address_1 }}</p>
-          <p>{{ address.city }}</p>
-          <p>{{ address.postal_code }}</p>
+          <p>{{ address.address_2 }}</p>
+          <p>{{ address.city }} {{ address.postal_code }}</p>
           <p v-if="address.country_division">
-            {{ address.country_division.name }}
+            {{ address.country_division.name }}, {{ address.country.name }}
           </p>
-          <p>{{ address.country.name }}</p>
+          <p v-else>{{ address.country.name }}</p>
         </td>
 
         <td>
