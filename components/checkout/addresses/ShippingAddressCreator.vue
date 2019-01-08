@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <div v-if="showDivisionsDropdown" class="column is-4">
+      <div v-if="selectedCountry && showDivisionsDropdown" class="column is-4">
         <div class="field">
           <label class="label">{{ selectedCountry.division_type }}</label>
 
@@ -113,7 +113,10 @@
     watch: {
       'form.country_id' (countryId) {
         this.selectedCountry = this.getCountryById(countryId)
-        this.showDivisionsDropdown = this.selectedCountry.has_divisions
+
+        if (this.selectedCountry) {
+          this.showDivisionsDropdown = this.selectedCountry.has_divisions
+        }
 
         this.form.country_division_id = ''
       }
