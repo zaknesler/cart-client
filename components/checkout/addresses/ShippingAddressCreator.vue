@@ -57,11 +57,11 @@
 
       <div v-if="showDivisionsDropdown" class="column is-4">
         <div class="field">
-          <label class="label">{{ selectedCountry.divisions.type }}</label>
+          <label class="label">{{ selectedCountry.division_type }}</label>
 
           <div class="control">
             <div class="select is-fullwidth">
-              <CountryDivisionDropdown :divisions="selectedCountry.divisions.data" v-model="form.country_division_id" />
+              <CountryDivisionDropdown :divisions="selectedCountry.divisions" v-model="form.country_division_id" />
             </div>
           </div>
         </div>
