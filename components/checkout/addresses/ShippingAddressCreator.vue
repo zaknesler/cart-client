@@ -122,7 +122,7 @@
       }
     },
 
-    created() {
+    created () {
       this.getCountries()
     },
 
