@@ -55,6 +55,10 @@
             <nuxt-link :to="{ name: 'auth-login'}" class="navbar-item">
               Sign in
             </nuxt-link>
+
+            <nuxt-link :to="{ name: 'auth-register'}" class="navbar-item">
+              Sign up
+            </nuxt-link>
           </template>
 
           <template v-else>

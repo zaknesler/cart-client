@@ -66,7 +66,7 @@ module.exports = {
         endpoints: {
           login: { url: '/auth/login', method: 'post', propertyName: 'meta.token' },
           user: { url: '/auth/me', method: 'get', propertyName: 'data' },
-          logout: false
+          logout: { url: '/auth/logout', method: 'delete' },
         }
       }
     }
