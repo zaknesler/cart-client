@@ -40,7 +40,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    //
+    { src: './plugins/mixins/flash.js', ssr: false },
+    './plugins/mixins/validation.js',
+    './plugins/axios.js'
   ],
 
   /*
@@ -52,6 +54,13 @@ module.exports = {
     '@nuxtjs/auth',
     '@nuxtjs/dotenv'
   ],
+
+  router: {
+    middleware: [
+      'clearValidationErrors',
+      'clearFlashMessage'
+    ]
+  },
 
   /*
   ** Axios module configuration

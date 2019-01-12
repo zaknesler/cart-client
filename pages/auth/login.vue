@@ -28,7 +28,15 @@
               <label class="label">Password</label>
 
               <div class="control">
-                <input v-model="form.password" class="input" type="password" required>
+                <input
+                  v-model="form.password"
+                  :class="{ 'is-danger': errors.password }"
+                  class="input"
+                  type="password"
+                  required
+                >
+
+                <p v-if="errors.password" class="help is-danger">{{ errors.password[0] }}</p>
               </div>
             </div>
 
@@ -47,16 +55,12 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-
   export default {
     data: () => ({
       form: {
         email: '',
         password: '',
-      },
-
-      errors: []
+      }
     }),
 
     middleware: [
@@ -64,34 +68,9 @@
     ],
 
     methods: {
-      ...mapActions({
-        flash: 'alert/flash'
-      }),
-
       async login () {
         await this.$auth.loginWith('local', {
           data: this.form
-        }).then(({ data }) => {
-          if (this.$route.query.redirect) {
-            this.$router.push(this.$route.query.redirect)
-
-            return
-          }
-
-          this.flash('You have been signed in.')
-
-          this.$router.push({
-            name: 'index'
-          })
-        })
-        .catch(({ response }) => {
-          if (response) {
-            this.errors = response.data.errors
-          }
-
-          if (this.errors.length) {
-            this.flash('Could not sign you in with those credentials.')
-          }
         })
       }
     }

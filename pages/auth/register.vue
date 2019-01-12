@@ -64,17 +64,13 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-
   export default {
     data: () => ({
       form: {
         name: '',
         email: '',
         password: '',
-      },
-
-      errors: []
+      }
     }),
 
     middleware: [
@@ -82,29 +78,14 @@
     ],
 
     methods: {
-      ...mapActions({
-        flash: 'alert/flash'
-      }),
-
       async register () {
         await this.$axios.$post('/auth/register', this.form)
-          .then(({ data }) => {
-            if (this.$route.query.redirect) {
-              this.$router.push(this.$route.query.redirect)
-
-              return
-            }
-
+          .then(() => {
             this.flash('Your account has been registered and you may now sign in.')
 
             this.$router.push({
               name: 'auth-login'
             })
-          })
-          .catch(({ response }) => {
-            if (response) {
-              this.errors = response.data.errors
-            }
           })
       }
     }

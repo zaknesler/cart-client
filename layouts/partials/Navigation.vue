@@ -52,17 +52,17 @@
       <div id="nav" class="navbar-menu">
         <div class="navbar-end">
           <template v-if="!$auth.loggedIn">
-            <nuxt-link :to="{ name: 'auth-login'}" class="navbar-item">
+            <nuxt-link :to="{ name: 'auth-login' }" class="navbar-item">
               Sign in
             </nuxt-link>
 
-            <nuxt-link :to="{ name: 'auth-register'}" class="navbar-item">
+            <nuxt-link :to="{ name: 'auth-register' }" class="navbar-item">
               Sign up
             </nuxt-link>
           </template>
 
           <template v-else>
-            <nuxt-link :to="{ name: 'cart'}" class="navbar-item">
+            <nuxt-link :to="{ name: 'cart' }" class="navbar-item">
               Cart ({{ cartCount }})
             </nuxt-link>
 
@@ -70,7 +70,7 @@
               <div class="navbar-link">{{ $auth.user.name }}</div>
 
               <div class="navbar-dropdown">
-                <nuxt-link :to="{ name: 'orders'}" class="navbar-item">Orders</nuxt-link>
+                <nuxt-link :to="{ name: 'orders' }" class="navbar-item">Orders</nuxt-link>
                 <LogoutComponent class="navbar-item" />
               </div>
             </div>
@@ -94,7 +94,7 @@
     computed: {
       ...mapGetters({
         categories: 'categories',
-        cartCount: 'cart/count',
+        cartCount: 'cart/count'
       })
     }
   }

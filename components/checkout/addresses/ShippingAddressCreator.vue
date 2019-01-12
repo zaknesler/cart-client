@@ -128,7 +128,7 @@
 
     methods: {
       async getCountries() {
-        let { data } = await this.$axios.$get('/countries')
+        let { data } = await this.$axios.$get('/countries?has_shipping_methods')
 
         this.countries = data
       },
