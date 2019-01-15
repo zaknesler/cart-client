@@ -6,24 +6,24 @@
         :key="product.id"
         :product="product"
       />
+
+      <tr>
+        <td />
+        <td />
+
+        <td>
+          <p class="has-text-weight-bold">Subtotal</p>
+        </td>
+
+        <td>
+          <p>{{ subtotal }}</p>
+        </td>
+
+        <td />
+      </tr>
+
+      <slot name="rows" />
     </tbody>
-
-    <tr>
-      <td />
-      <td />
-
-      <td>
-        <p class="has-text-weight-bold">Subtotal</p>
-      </td>
-
-      <td>
-        <p>{{ subtotal }}</p>
-      </td>
-
-      <td />
-    </tr>
-
-    <slot name="rows" />
   </table>
 </template>
 
