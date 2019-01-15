@@ -1,7 +1,7 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
 
   /*
   ** Headers of the page
@@ -49,7 +49,6 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-spa-store-init',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/dotenv'

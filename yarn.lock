@@ -5315,11 +5315,6 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-spa-store-init@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/nuxt-spa-store-init/-/nuxt-spa-store-init-1.1.0.tgz#9db451dd8589fc839208c131194205032abfc1b1"
-  integrity sha512-y5hkdRO8shcXPOKgBPMlRfWRx5h2X7oy5j1Zc4SB1z+Ks/6abuAVWZZMfCTNj3ZvDjZbAnaqXTWq/sm3F51Ueg==
-
 nuxt@^2.0.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.3.4.tgz#61f5fe856ebbeced89f04a3734baa4ee91cc3cfa"
