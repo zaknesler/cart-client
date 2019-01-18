@@ -65,7 +65,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://cart-api.test/api'
+    baseURL: process.env.BASE_URL
   },
 
   auth: {
